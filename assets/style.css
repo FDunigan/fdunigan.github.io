@@ -1,0 +1,109 @@
+* {
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+header {
+    float: left;
+    color: white;
+    background-color: #4aaaaf;
+    padding: 20px;
+}
+
+.topnav a {
+    float: right;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+#full {
+    width: 100%;
+    overflow: auto;
+    clear: both;
+    background: #eee;
+    height: 400px;
+  }
+  
+#division {
+    padding: 20px;
+    margin-top: 20px;
+    background: white;
+    text-align: left;
+    width: 960px;
+    margin-left: 150px;
+    height: 370px;
+    color: #4aaaaf;
+  }
+
+label {
+    float: left;
+}
+
+#fname {
+    text-align: left;
+}
+
+#email {
+    text-align: left;
+}
+
+#subject {
+    text-align: left;
+}
+
+input[type=text], select, textarea {
+    width: 100%; 
+    padding: 12px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px; 
+    margin-bottom: 16px; 
+    resize: vertical; 
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: left;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.container {
+    border-radius: 5px;
+    background-color: white;
+    padding: 20px;
+}
+
+img {
+    float: left;
+    height: 200px;
+    margin-right: 20px;
+}
+
+p {
+    color: black;
+    text-align: left;
+}
+
+footer {
+    padding: 20px;
+    clear: both;
+    background: black;
+    text-align: center;
+    color: white;
+}
