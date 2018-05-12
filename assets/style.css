@@ -7,6 +7,10 @@ body {
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+#heading {
+    width: 960px;
+}
+
 header {
     float: left;
     color: white;
@@ -41,6 +45,17 @@ header {
     height: 370px;
     color: #4aaaaf;
   }
+
+  #relative {
+    background: #4aaaaf;
+    position: relative;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    height: 100px;
+    width: 33%;
+    color: white;
+}
 
 label {
     float: left;
@@ -98,6 +113,19 @@ img {
 p {
     color: black;
     text-align: left;
+}
+
+.image {
+    position: relative;
+    width: 25%;
+}
+
+h4 {
+    position: absolute;
+    top: 140px;
+    left: 0;
+    width: 75%;
+    color: white;
 }
 
 footer {
