@@ -1,2 +1,0 @@
-# giphy
-Homework #6
