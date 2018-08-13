@@ -13,7 +13,6 @@ var database = firebase.database();
 
 $("#sendMessageButton").on("click", function(event) {
     event.preventDefault();
-    event.html("Your message has been sent!");
   
     var name = $("#name").val();
     var email = $("#email").val();
@@ -38,6 +37,8 @@ $("#sendMessageButton").on("click", function(event) {
     $("#email").val("");
     $("#phone").val("");
     $("#message").val("");
+
+    $("#contact-modal").modal("toggle");
   });
 
 database.ref().on("child_added", function(childSnapshot) {
