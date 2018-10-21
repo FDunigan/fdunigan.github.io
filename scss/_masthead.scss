@@ -9,6 +9,9 @@ header.masthead {
     font-size: 1.3rem;
     @include body-font;
   }
+  img {
+    border-radius: 50%;
+  }
 }
 @media (min-width: 992px) {
   header.masthead {

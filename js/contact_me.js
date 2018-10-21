@@ -1,4 +1,6 @@
-var config = {
+(function (window, document, $) {
+
+  var config = {
     apiKey: "AIzaSyCpO6z-mu937PZOwD6S_nNTDmcSsW68QcE",
     authDomain: "wonderful-8035a.firebaseapp.com",
     databaseURL: "https://wonderful-8035a.firebaseio.com",
@@ -7,50 +9,58 @@ var config = {
     messagingSenderId: "290153267893"
   };
 
-firebase.initializeApp(config);
+  window.firebase.initializeApp(config);
 
-var database = firebase.database();
+  var database = window.firebase.database();
+  var fields = [
+    document.getElementById("name"),
+    document.getElementById("email"),
+    document.getElementById("phone"),
+    document.getElementById("message"),
+  ];
 
-$("#sendMessageButton").on("click", function(event) {
-    event.preventDefault();
-  
-    var name = $("#name").val();
-    var email = $("#email").val();
-    var phone = $("#phone").val();
-    var message = $("#message").val();
-  
-    var newMessage = {
-      name: name,
-      email: email,
-      phone: phone,
-      message: message
-    };
-  
-    database.ref().push(newMessage);
-  
-    console.log(newMessage.name);
-    console.log(newMessage.email);
-    console.log(newMessage.phone);
-    console.log(newMessage.message);
-  
-    $("#name").val("");
-    $("#email").val("");
-    $("#phone").val("");
-    $("#message").val("");
-
-    $("#contact-modal").modal("toggle");
+  $(function () {
+    $("#contactForm *")
+      .not("[type=submit]")
+      .jqBootstrapValidation({
+        submitSuccess: function ($form, event) {
+          event.preventDefault();
+          saveData();
+        }
+      });
   });
 
-database.ref().on("child_added", function(childSnapshot) {
-    console.log(childSnapshot.val());
-  
-    var name = childSnapshot.val().name;
-    var email = childSnapshot.val().email;
-    var phone = childSnapshot.val().phone;
-    var message = childSnapshot.val().message;
-  
-    console.log(name);
-    console.log(email);
-    console.log(phone);
-    console.log(message);
-});    
+  function saveData() {
+
+    var newMessage = {};
+
+    fields.forEach(function (field) {
+      newMessage[field.id] = field.value;
+    });
+
+    database
+      .ref()
+      .push(newMessage)
+      .then(handleSuccess)
+      .catch(handleError);
+  }
+
+  function handleSuccess() {
+    var MESSAGE = 'Your message has been sent!';
+
+    $("#contact-modal-message").text(MESSAGE);
+    $("#contact-modal").modal("toggle");
+
+    fields.forEach(function (field) {
+      field.value = "";
+    });
+  }
+
+  function handleError() {
+    var MESSAGE = 'An Error occured and your message has not been sent!';
+
+    $("#contact-modal-message").text(MESSAGE);
+    $("#contact-modal").modal("toggle");
+  }
+
+})(window, document, $);
